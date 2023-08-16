@@ -57,10 +57,20 @@ bool LPrint(LinkList& L) {
 		cout << p->next->data<<"  ";
 		p=p->next;
 	}
+	cout << endl;
 	return true;
 }
 
 /*01 递归删除不带头节点链表中x的值*/
-bool LDeletX(LNode& L) {
-	return false;
+bool LDeletX(LinkList& L, int x) {
+	if (L == NULL) return false;
+	LinkList p=L, q;
+	if (p->next == NULL) return false; //防止在递归调用，指针为空时，继续运行
+	q = p->next;
+	if (q->data== x ) {
+		p->next = q->next;
+		free(q);
+	}
+	LDeletX(p->next, x);  //q指针指向下一个节点，继续调用自身
+	return true;
 }
