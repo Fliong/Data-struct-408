@@ -17,6 +17,7 @@ void InitList(SqL& L);// ³õÊ¼»¯Ë³Ğò±í
 void Print(SqL& L);//´òÓ¡Ë³Ğò±í
 void Comp(SqL& L, int temp[], int j);//Ë³Ğò±íÖĞ¿ÕÈ±µÄÎ»ÖÃ½øĞĞ²¹Æë
 int FindxHalf(SqL& L, int x);//ÕÛ°ë²éÕÒ
+bool InsertXup(SqL& L, int x);//ÔÚµİÔöÏßĞÔ±íÖĞ£¬½«xÖµ·ÅÈëÊÊµ±µÄÎ»ÖÃ
 
 /*´óº¯Êı£¨½âÌâ·½·¨Àà£©*/
 bool DeletX(SqL& L, int& min);//½«Ë³Ğò±íµÄ×îºóÒ»Î»Ìæ»»Ë³Ğò±í×îĞ¡ÖµµÄÎ»ÖÃ
@@ -27,3 +28,4 @@ bool DeletRangeOrder2(SqL& L, int s, int t);//É¾³ıÓĞĞòË³Ğò±íÖĞ£¬ÖµÔÚ[s,t]·¶Î§µÄÖ
 bool DeletSameOrder(SqL& L);//É¾³ıÓĞĞòË³Ğò±íÖĞÖØ¸´µÃÖµ£¬Ê¹Ë³Ğò±íÖĞµÄÖµ¾ùÓĞ²»Í¬¡£
 SqL Order2SqL(SqL& L1, SqL& L2);//½«Á½¸öÓĞĞòË³Ğò±í£¬ºÏ²¢ÎªÒ»¸öĞÂµÄË³Ğò±í
 bool Amn2nm(SqL& A);//Êı×éA[m+n]ÖĞÁ½¸öÏßĞÔ±í£¬½øĞĞË³Ğòµßµ¹
+bool ChangeXprev(SqL& L, Elem x);//²éÕÒx,ÕÒµ½£¬ÔòºÍºó¼ÌÔªËØ½»»»£»ÕÒ²»µ½£¬Ôò²åÈë±íÖĞ£¨µİÔöË³Ğò±í£©

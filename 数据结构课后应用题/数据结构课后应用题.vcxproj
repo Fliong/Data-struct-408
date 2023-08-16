@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="2-2-3.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Linkf(x).cpp" />
     <ClCompile Include="myfx.cpp" />
   </ItemGroup>
