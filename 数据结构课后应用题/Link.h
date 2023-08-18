@@ -18,7 +18,12 @@ typedef struct LNode {
 
 //小函数
 bool LInitList(LinkList& L);//创建第一个节点，选择带不带头结点
-bool TailInsertList(LinkList& L);//尾插法建立单向链表
+LinkList TailInsertList(LinkList& L);//尾插法建立单向链表
 bool Input(LinkList& L);//向单链表中输入值
 bool LPrint(LinkList& L);//打印链表
-bool LDeletX(LinkList& L, int x);//递归删除链表中与x相等的值
+
+
+bool LDeletXn(LinkList& L, ElemType x);//递归删除链表中与x相等的值
+bool ReniPrint(LinkList& L);//逆向打印链表
+bool LDeletMin(LinkList& L);//删除链表最小值
+bool ReniList(LinkList& L, LNode& p);//带头结点就地逆置

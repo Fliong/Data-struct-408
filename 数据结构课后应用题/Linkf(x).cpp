@@ -24,28 +24,38 @@ bool LInitList(LinkList& L) {
 	default:
 		break;
 	}
+	return true;
 }
 
 /*带头结点尾插法*/
-bool TailInsertList(LinkList& L) {
-	if (L == NULL) return false;
-	LinkList p = L;
+LNode* TailInsertList(LinkList& L) {
+	
 	int x, i=2;
 	cout << "请输入链表值No.1：" ;
 	cin >> x;
+	if (L == NULL) {
+		LinkList t = (LinkList)malloc(sizeof(LNode));
+		if (t == NULL) exit(0);
+		t->data = x;
+		t->next = NULL;
+		L = t;
+		cout << "请输入链表值No." << i++ << "：";
+		cin >> x;
+	}
+	LinkList p = L;    //初始p指向链表头
 	while (x != 9999) {
-		LinkList s = (LinkList)malloc(sizeof(LNode));
-		if (s == NULL) return false;
-		s->data = x;
+		LinkList s = (LinkList)malloc(sizeof(LNode));  //申请一个节点
+		if (s == NULL) exit(0);   //如果申请失败退出
+		s->data = x;       //将x值赋给新申请节点的数据域
 		s->next = NULL;
-		p->next = s;
-		p = s;
+		p->next = s;      //将新节点连接至链表
+		p = s;          //指针p，指向新增节点
 		cout << "请输入链表值No." << i << "：";
 		cin >> x;
 		i++;
 	}
 	p->next = NULL;
-	return true;
+	return p;
 }
 
 /*打印链表*/
@@ -53,24 +63,63 @@ bool LPrint(LinkList& L) {
 	if (L == NULL) return false;
 	LNode* p = L;
 	cout << "该链表为：";
-	while (p->next != NULL) {
-		cout << p->next->data<<"  ";
+	while (p != NULL) {
+	    if(abs(p->data)<9999) cout << p->data<<"  "; //如果有头结点，不打印头结点的值
 		p=p->next;
 	}
 	cout << endl;
 	return true;
 }
-
-/*01 递归删除不带头节点链表中x的值*/
-bool LDeletX(LinkList& L, int x) {
-	if (L == NULL) return false;
-	LinkList p=L, q;
-	if (p->next == NULL) return false; //防止在递归调用，指针为空时，继续运行
-	q = p->next;
-	if (q->data== x ) {
-		p->next = q->next;
-		free(q);
+/*03反向打印链表*/
+bool ReniPrint(LinkList& L) {
+	if (L->next != NULL) {
+		ReniPrint(L->next);
+		
 	}
-	LDeletX(p->next, x);  //q指针指向下一个节点，继续调用自身
+	if(L->data>0 && L->data<9999) cout << L->data << " ";
+	return true;
+}
+
+
+/*01,02递归删除结点链表中x的值*/
+bool LDeletXn(LinkList& L, ElemType x) {
+	if (L == NULL) return false;
+	LinkList p;
+	if (L->data == x) {
+		p = L;
+		L = L->next;   //头结点L一直不变
+		free(p);
+		LDeletXn(L, x);
+	}
+	else {
+		LDeletXn(L->next, x);
+	}
+	return true;
+}
+
+/*04删除链表中最小值*/
+bool LDeletMin(LinkList& L) {
+	if (L == NULL) return false;
+	LNode* p = L, * q = L->next;  //初始化p,q指针，指向最n 和n+1;
+	while (q != NULL) {
+		if (abs(p->data) > q->data) {
+			p = q;
+		}
+		q = q->next;
+	}
+	LDeletXn(L, p->data);
+	return true;
+}
+
+/*05带头结点就地逆置*/
+bool ReniList(LinkList& L,LNode& p) {
+	LNode* q = L;
+	ElemType temp;
+	while (q->data != p.data) {
+		temp = q->data;
+		q->data = p.data;
+		p.data = temp;
+		
+	}
 	return true;
 }

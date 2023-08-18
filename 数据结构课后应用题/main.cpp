@@ -1,13 +1,18 @@
 #include"Link.h"
 
 int main() {
-	int x;
+	ElemType x;
 	LinkList L;
+	LNode* q;
 	LInitList(L);
-	TailInsertList(L);
-	LPrint(L);
-	cout << "请输入想要删除的值：" << endl;
-	cin >> x;
-	LDeletX(L, x);
+	q = TailInsertList(L);
+	//ReniPrint(L);
+	//cout << endl<< "请输入想要删除的值：" << endl;
+	//cin >> x;
+	//LDeletXn(L, x);
+
+	//LDeletMin(L);
+
+	ReniList(L, *q);
 	LPrint(L);
 }
