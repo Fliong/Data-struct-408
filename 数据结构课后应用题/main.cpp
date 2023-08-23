@@ -7,12 +7,19 @@ int main() {
 	LInitList(L);
 	q = TailInsertList(L);
 	//ReniPrint(L);
-	//cout << endl<< "请输入想要删除的值：" << endl;
+	//cout << endl<< "请输入想要删除的值："<<q->data << endl;
+	//cout << L->next->data << endl;
 	//cin >> x;
 	//LDeletXn(L, x);
 
 	//LDeletMin(L);
 
-	ReniList(L, *q);
+	//ReniList_1(L);
+
+	//UpList(L);
+
+	//DeletRangeList(L, 2, 5);
+
+	//
 	LPrint(L);
 }
