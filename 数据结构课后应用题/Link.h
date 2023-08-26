@@ -32,3 +32,5 @@ bool ReniList_2(LinkList& L);
 bool UpList(LinkList& L); //递增排序链表
 bool DeletRangeList(LinkList& L, ElemType min, ElemType max); //删除链表中[min,max]的值
 LinkList FindSameNode(LinkList& L1, LinkList& L2); //寻找两个链表的公共节点
+bool Print2Free(LinkList& head); //递增输出链表值，并释放对应的空间（带头结点)
+LinkList DecomposeOE(LinkList& A);//将链表中的奇偶数分成A(奇数) B(偶数) 两个链表

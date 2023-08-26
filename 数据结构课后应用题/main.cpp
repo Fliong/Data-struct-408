@@ -2,10 +2,11 @@
 
 int main() {
 	ElemType x;
-	LinkList L;
+	LinkList L, B;
 	LNode* q;
 	LInitList(L);
 	q = TailInsertList(L);
+	LPrint(L);
 	//ReniPrint(L);
 	//cout << endl<< "请输入想要删除的值："<<q->data << endl;
 	//cout << L->next->data << endl;
@@ -20,6 +21,8 @@ int main() {
 
 	//DeletRangeList(L, 2, 5);
 
-	//
+	//Print2Free(L);
+	B = DecomposeOE(L);
 	LPrint(L);
+	LPrint(B);
 }

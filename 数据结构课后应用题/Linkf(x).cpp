@@ -82,7 +82,7 @@ bool ReniPrint(LinkList& L) {
 
 /*统计链表长度*/
 int Length(LinkList& L) {
-	int len;
+	int len = 0;
 	LNode* p = L;
 	if (abs(L->data) > 9999) p = p->next;
 	while (p != NULL) {
@@ -219,4 +219,51 @@ LinkList FindSameNode(LinkList& L1, LinkList& L2) {
 		shortlist = shortlist->next;
 	}
 	return NULL;   //如果到最后没有找到共同节点， 返回 NULL 值
+}
+
+/*09递增输出链表值，并释放对应的空间（带头结点）*/
+bool Print2Free(LinkList& head) {
+	if (head == NULL) return false;
+	LNode* pre, * q;
+	bool stence;      //定义bool 的变量用来接收 UpList 处理链表返回的结果（true/false）
+	stence = UpList(head);
+	if (stence) {     
+		pre = head->next;   //结构体指针指向处理后链表的第一个数据节点
+		cout << "链表递增输出为：";
+		while (pre != NULL) {
+			cout << pre->data << " ";   //依次打印增序链表的值
+			q = pre;                  //将释放的节点用q 指向
+			head->next = pre->next;    //链表头指针跳过第一个元素，指向下一个元素
+			pre = pre->next;          //pre 后移
+			free(q);
+		}
+		cout << endl;
+		return true;
+	}
+	return false;
+}
+
+/*10 将链表中的奇偶数分成A(奇数) B(偶数) 两个链表*/
+LinkList DecomposeOE(LinkList& A) {
+	LNode* pA_1, *pA_0, * pB_1, * qA_1; //初始化结构体指针 pA_1,  pB_1,  qA_1（指向即将释放的节点）
+	if (A == NULL) return NULL;
+	LinkList B = (LinkList)malloc(sizeof(LNode));   //申请偶数头结点B
+	//C++里也可以用 LinkList B = new LNode;
+	if (B == NULL) return NULL;
+	B->next = NULL;
+	
+	pA_0 = A; pA_1 = A->next; pB_1 = B;
+	while (pA_1 != NULL) {
+		if (pA_1->data % 2 == 0) {   //判断奇偶性，若为偶数
+			pB_1->next = pA_1;        //pB_1的next指向该节点
+			pA_0->next = pA_1->next;   //而链表A中的pA_1指向的前一个节点指向其后节点
+			pB_1 = pB_1->next;      //pB_1指针后移
+		}
+		else {
+			pA_0 = pA_1;      //如果不为偶数，pA_0 后移，pA_0 一直为 pA_1 的前节点
+		}
+		pA_1 = pA_1->next;    //pA_1 后移
+	}
+	pB_1->next = NULL;   //此时pB_1指向链为 赋值为 NULL
+	return B;
 }
