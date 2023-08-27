@@ -1,7 +1,7 @@
 # Data-struct-408
 data struct
 
-#线性表
+# 线性表
 线性表的顺序表示：
 头文件：myhead.h
 算法库：myfx.cpp
