@@ -267,3 +267,37 @@ LinkList DecomposeOE(LinkList& A) {
 	pB_1->next = NULL;   //此时pB_1指向链为 赋值为 NULL
 	return B;
 }
+
+/*12增序链表中删除相同元素(带头结点)*/
+bool LDeletSameX(LinkList& L) {
+	if (L == NULL) return false;
+	LNode* pre, * p, * q = NULL;
+	pre = L->next;  //因带头结点，pre 指向链表的第一个元素
+
+	while (pre->next != NULL) {    //外层循环
+		p = pre->next;     //pre 是 p 的前驱
+		while (pre->data == p->data) {   //如果pre 和 p 指向的元素相等
+			q = p;               //q 指向将要释放的元素
+			pre->next = p->next;     //pre 指针跳过 p 指向 p 的下一个元素
+			p = p->next;         //p 指针后移
+			free(q);      //释放q
+		}
+		pre = pre->next;
+	}
+
+}
+
+/*13两个增序单链表，合并为递减单链表*/
+LinkList TwoUpL2OneDown(LinkList& L1, LinkList& L2) {
+	LNode* p = L1;
+	bool s1, s2;
+	while ( p->next != NULL) {     //利用循环令 p 指向 L1 最后一个节点
+		p = p->next; 
+	}
+	p->next = L2->next;   //让最后一个节点的指针域指向 L2 的第一个元素域，即将 L1 和 L2 串起来
+	free(L2);    //释放L2 的头结点
+	s1 = UpList(L1);   //重新增序排列 L1
+	s2 = ReniList_2(L1);   //链表逆置
+	if (s1 && s2) return L1;
+	else return NULL;
+}

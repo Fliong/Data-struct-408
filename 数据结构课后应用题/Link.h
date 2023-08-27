@@ -23,7 +23,7 @@ bool Input(LinkList& L);//向单链表中输入值
 bool LPrint(LinkList& L);//打印链表
 int Length(LinkList& L); //获取链表长度
 
-
+//算法库
 bool LDeletXn(LinkList& L, ElemType x);//递归删除链表中与x相等的值
 bool ReniPrint(LinkList& L);//逆向打印链表
 bool LDeletMin(LinkList& L);//删除链表最小值
@@ -34,3 +34,5 @@ bool DeletRangeList(LinkList& L, ElemType min, ElemType max); //删除链表中[min,m
 LinkList FindSameNode(LinkList& L1, LinkList& L2); //寻找两个链表的公共节点
 bool Print2Free(LinkList& head); //递增输出链表值，并释放对应的空间（带头结点)
 LinkList DecomposeOE(LinkList& A);//将链表中的奇偶数分成A(奇数) B(偶数) 两个链表
+bool LDeletSameX(LinkList& L); //增序链表中删除相同元素(带头结点)
+LinkList TwoUpL2OneDown(LinkList& L1, LinkList& L2); //两个增序单链表，合并为递减单链表
