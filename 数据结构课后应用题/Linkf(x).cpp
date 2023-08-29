@@ -31,6 +31,7 @@ bool LInitList(LinkList& L) {
 LNode* TailInsertList(LinkList& L) {
 	
 	int x, i=2;
+	char op;
 	cout << "请输入链表值No.1：" ;
 	cin >> x;
 	if (L == NULL) {
@@ -54,7 +55,15 @@ LNode* TailInsertList(LinkList& L) {
 		cin >> x;
 		i++;
 	}
-	p->next = NULL;
+
+	cout << endl << "是否建立为循环单链表(y/n):";
+	cin >> op;
+	switch (op) {
+	case 'y': p->next = L; break;
+	case 'n': p->next = NULL; break;
+	default: p->next = NULL;
+	}
+
 	return p;
 }
 
@@ -66,6 +75,7 @@ bool LPrint(LinkList& L) {
 	while (p != NULL) {
 	    if(abs(p->data)<9999) cout << p->data<<"  "; //如果有头结点，不打印头结点的值
 		p=p->next;
+		if (p == L) break;  //如果为循环链表的话，防止死循环
 	}
 	cout << endl;
 	return true;
@@ -169,8 +179,10 @@ bool UpList(LinkList& L) {
 				p->data = q->data;
 				q->data = data;
 			}
+			if (q->next == L) break;   //防止循环链表死循环
 			q = q->next;
 		}
+		if (p->next == q) break;     //同上
 		p = p->next;
 	}
 	return true;
@@ -235,6 +247,10 @@ bool Print2Free(LinkList& head) {
 			q = pre;                  //将释放的节点用q 指向
 			head->next = pre->next;    //链表头指针跳过第一个元素，指向下一个元素
 			pre = pre->next;          //pre 后移
+			if (pre == head) {        //防止指针冲突
+				free(pre);           //释放头结点
+				break;         //跳出循环，防止死循环
+			}
 			free(q);
 		}
 		cout << endl;
@@ -245,7 +261,7 @@ bool Print2Free(LinkList& head) {
 
 /*10 将链表中的奇偶数分成A(奇数) B(偶数) 两个链表*/
 LinkList DecomposeOE(LinkList& A) {
-	LNode* pA_1, *pA_0, * pB_1, * qA_1; //初始化结构体指针 pA_1,  pB_1,  qA_1（指向即将释放的节点）
+	LNode* pA_1, *pA_0, * pB_1; //初始化结构体指针 pA_1,  pB_1,  qA_1（指向即将释放的节点）
 	if (A == NULL) return NULL;
 	LinkList B = (LinkList)malloc(sizeof(LNode));   //申请偶数头结点B
 	//C++里也可以用 LinkList B = new LNode;
@@ -284,7 +300,7 @@ bool LDeletSameX(LinkList& L) {
 		}
 		pre = pre->next;
 	}
-
+	return true;
 }
 
 /*13两个增序单链表，合并为递减单链表*/
@@ -301,3 +317,41 @@ LinkList TwoUpL2OneDown(LinkList& L1, LinkList& L2) {
 	if (s1 && s2) return L1;
 	else return NULL;
 }
+
+/*14创建一个新链表，包含两个链表的共同元素*/
+LinkList TwoLSameX2newlist(LinkList& L1, LinkList& L2) {
+	if (L1 == NULL || L2 == NULL) return NULL;
+	LinkList C = new LNode; C->next = NULL;    //新链表的头结点
+	LNode* pL1 = L1->next;   //初始化，pL1指向 链表 L1 的第一个数据元素
+	LNode* pL2 = L2->next;          //pL2指向 链表 L2 的第一个数据元素
+	LNode* pC = C;        //pC 指向 新链表的头结点
+
+	while ((pL1 != NULL) && (pL2 != NULL)) {     //跳出循环的条件
+		if (pL1->data > pL2->data) pL2 = pL2->next;    // 对比 pL1 和 pL2 的值，pL1 大，则 pL2 后移
+		else if (pL1->data < pL2->data) pL1 = pL1->next;  //若 pL2 大 ，则 pL1 后移
+		else {                                    // 若两个值相等
+			LinkList add = new LNode;        //创建新节点
+			add->data = pL1->data;           //将两个链表相等的值 赋值给 新节点的数据域 
+			add->next = NULL;             //新节点的指针域为 NULL
+			pC->next = add;              //将新节点 连接上 新链表的头结点
+			pC = pC->next;               //指针 pC 一直指向 新链表的最后
+
+			pL2 = pL2->next;            //pL1、pL2 都进行后移
+			pL1 = pL1->next;
+		}
+	}
+	return C;         //返回新链表的头结点
+}
+
+/*18将两个循环单链表合并为一个循环单链表*/
+bool TwoCycleConnect(LinkList& h1,LNode* p1, LinkList& h2, LNode* p2) {
+	if (h1 == NULL || h2 == NULL) return false;
+	
+	if (abs(h2->data) >= 9999) p1->next = h2->next;   //判断是否含有头结点
+	else p1->next = h2;
+	p2->next = h1;
+
+	return true;
+}
+
+

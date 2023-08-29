@@ -8,11 +8,12 @@ int main() {
 	LInitList(L);
 	q = TailInsertList(L);
 
-	LInitList(B);
-	s = TailInsertList(B);
+	//LInitList(B);
+	//s = TailInsertList(B);
 
 	LPrint(L);
-	LPrint(B);
+	//LPrint(B);
+
 	//ReniPrint(L);
 	//cout << endl<< "请输入想要删除的值："<<q->data << endl;
 	//cout << L->next->data << endl;
@@ -27,11 +28,11 @@ int main() {
 
 	//DeletRangeList(L, 2, 5);
 
-	//Print2Free(L);
+	Print2Free(L);
 	//B = DecomposeOE(L);
 
 	//LDeletSameX(L);
-	N = TwoUpL2OneDown(L, B);
-	LPrint(N);
+	//TwoCycleConnect(L,q, B,s);
+	LPrint(L);
 	//LPrint(B);
 }

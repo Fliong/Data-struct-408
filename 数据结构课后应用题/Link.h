@@ -36,3 +36,5 @@ bool Print2Free(LinkList& head); //递增输出链表值，并释放对应的空间（带头结点)
 LinkList DecomposeOE(LinkList& A);//将链表中的奇偶数分成A(奇数) B(偶数) 两个链表
 bool LDeletSameX(LinkList& L); //增序链表中删除相同元素(带头结点)
 LinkList TwoUpL2OneDown(LinkList& L1, LinkList& L2); //两个增序单链表，合并为递减单链表
+LinkList TwoLSameX2newlist(LinkList& L1, LinkList& L2);// 创建一个新链表，包含两个链表的共同元素
+bool TwoCycleConnect(LinkList& h1, LNode* p1, LinkList& h2, LNode* p2);//两个循环单链表合并为一个循环单链表
