@@ -15,13 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="myfx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Linkf(x).cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StackQue_Func.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StackQ_main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,6 +33,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Link.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StackQue.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -353,5 +353,3 @@ bool TwoCycleConnect(LinkList& h1,LNode* p1, LinkList& h2, LNode* p2) {
 
 	return true;
 }
-
-

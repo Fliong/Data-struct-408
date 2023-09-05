@@ -139,13 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="Linkf(x).cpp" />
     <ClCompile Include="myfx.cpp" />
+    <ClCompile Include="StackQue_Func.cpp" />
+    <ClCompile Include="StackQ_main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Link.h" />
     <ClInclude Include="myhead.h" />
+    <ClInclude Include="StackQue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
