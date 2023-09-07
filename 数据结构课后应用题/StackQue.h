@@ -21,6 +21,10 @@ typedef struct LStack {
 	ElemType data;
 	struct LStack *next;
 } *LinkStack;
+typedef struct {
+	ElemType data[MAXSIZE];
+	int top_1, top_2;
+}ShareStack;
 
 /*队的数据结构*/
 
@@ -45,6 +49,8 @@ bool StackEmpty(SqStack& S);
 bool PushStack(SqStack& S, ElemType x);
 bool PopStack(SqStack& S, ElemType& x);
 void StackPrint(SqStack& S);
+ElemType ReadTop(SqStack& S); 
 
 void ContinePush(SqStack& S);//连续入栈
 void ContinePop(SqStack& S, int len);//连续出栈
+bool ShareStackOp(ShareStack& Shs);//共享栈操作
