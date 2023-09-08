@@ -124,7 +124,7 @@ bool ShareStackOp(ShareStack& Shs) {
 				else break;
 			}
 		}
-		else break;
+		else break;           //若选择0、1以外的栈，则退出
 	}
 
 	cout << "栈满！！" << endl;
@@ -144,4 +144,31 @@ bool ShareStackOp(ShareStack& Shs) {
 	}
 	cout << endl;
 	return true;
+}
+
+/*出入栈操作是否合法判断*/
+bool IOStackLegality(char Arryop[]) {
+	char push = 'I', pop = 'O';  //设置操作
+	int lenA = sizeof(Arryop), i = 0;  //获取数组长度 和遍历单位
+	int temp = 0;   //初始化操作为0，每次入栈 +1， 出栈 -1
+
+	while (i<lenA) {     //遍历数组操作符
+		if (Arryop[i] == push) {
+			temp++;
+		}
+		else {
+			if (temp > 0) temp--;
+			else return false;          //排除bug1 : 连续 n 次出栈，再连续 n 次入栈 ，temp=0
+		}
+		i++;
+	}
+	
+	if (temp == 0)  cout << "操作数合法";
+	else cout << "操作数非法";
+	return (temp == 0) ? true : false;   //根据temp的值判断操作是否合法
+}
+
+/*是否为中心对称字符*/
+bool CentralSym(LinkStack& L) {
+	
 }

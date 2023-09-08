@@ -4,6 +4,8 @@
 #include<stdlib.h>
 #include<iostream>
 #include<math.h>
+#include<string>
+#include<vector>
 #define MAXSIZE 10
 
 typedef int ElemType;
@@ -54,3 +56,5 @@ ElemType ReadTop(SqStack& S);
 void ContinePush(SqStack& S);//连续入栈
 void ContinePop(SqStack& S, int len);//连续出栈
 bool ShareStackOp(ShareStack& Shs);//共享栈操作
+
+bool IOStackLegality(char Arryop[]); //出入栈操作是否合法判断
