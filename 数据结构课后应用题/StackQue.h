@@ -34,6 +34,7 @@ typedef struct {
 typedef struct Queue {
 	ElemType data[MAXSIZE];
 	int front,rear;
+	int tag;
 } SqQueue;
 /*链队结构*/
 typedef struct  LQueue{
@@ -58,3 +59,14 @@ void ContinePop(SqStack& S, int len);//连续出栈
 bool ShareStackOp(ShareStack& Shs);//共享栈操作
 
 bool IOStackLegality(char Arryop[]); //出入栈操作是否合法判断
+bool CentralSym(LinkStack& L);//是否为中心对称字符
+
+/*队列操作函数*/
+void InitQueue(SqQueue& Q);
+bool InQueue(SqQueue& Q, ElemType x);
+bool OutQueue(SqQueue& Q, ElemType& x);
+void PrintQueue(SqQueue& Q);
+
+
+/*综合*/
+bool QueueTbyStack(SqQueue& Q, SqStack& S);  //Page 082_02   利用栈将队列元素逆置

@@ -2,22 +2,21 @@
 
 int main() {
 	SqStack S;
+	SqQueue Q;
 	ShareStack M;
 	ElemType x;
 	int len;
 
-	char Arryoi[] = { 'I','O','I','I','O','I','O','O' };
-	IOStackLegality(Arryoi);
-	exit(0);
-
-	ShareStackOp(M);
-	exit(0);
-
 	InitStack(S);
-	ContinePush(S);
-	cout << ReadTop(S) << endl;
-	cin >> len;
-	ContinePop(S, len);
+	InitQueue(Q);
+
+	cin >> x;
+	while (x != 9999) {
+		if (InQueue(Q, x)) cin >> x;
+		else break;
+	}
+	PrintQueue(Q);
+	QueueTbyStack(Q, S);
+	PrintQueue(Q);
 	StackPrint(S);
-	cout << ReadTop(S) << endl;
 }
